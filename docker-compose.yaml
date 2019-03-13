@@ -1,20 +1,45 @@
 version: '3'
-services:
 
+# Network segregation
+networks:
+  data:
+    internal: true
+  webapp:
+    internal: true
+  # Public network 
+  proxy:
+
+# Containers config
+services:
+  # Container database
   database:
     image: kdpsc/pd-data:v1.0
     container_name: database
     restart: unless-stopped
-  
+    networks:
+      - data
+
+  # Container backend
   backend:
     image: kdpsc/pd-app:v1.0
     container_name: backend
     restart: unless-stopped
-  
+    networks:
+      - data
+      - webapp
+    depends_on:
+      - database
+
+  # Container frontend
   frontend:
     image: kdpsc/pd-proxy:v1.0
     container_name: frontend
     restart: unless-stopped
     ports:
       - 80:80
-  
+    networks:
+      - webapp
+      - proxy
+    depends_on:
+      - backend
+
