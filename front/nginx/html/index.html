@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>API Test</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div>
+            <table>
+            <caption><h2>Test API Methods</h2></caption>
+                <tr>
+                    <td id="fundo">GET Method</td>
+                    <form action="http://localhost/notes" method="GET">
+                        <td colspan="2"><input type="submit" value="select" /></td>
+                    </form>
+                </tr>
+                <tr>
+                    <td>POST Method</td>
+                    <form action="http://localhost/notes" method="POST">
+                        <td><input type="text" id="Text" name="Text" required/></td>
+                        <td><input type="submit" value="insert" /></td>
+                    </form>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <form action="delete.php" method="POST">
+                        <td><input type="number" id="id" name="id" required /></td>
+                        <td><input type="submit" value="delete" /></td>            
+                    </form>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

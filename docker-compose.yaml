@@ -2,16 +2,25 @@ version: '3'
 services:
 
   database:
-    image: kdpsc/pd-data:v1.0
+    build:
+      context: ./data/
+      dockerfile: Dockerfile
+    image: pd-data:v1.0
     container_name: database
     restart: unless-stopped
   
   backend:
+    build:
+      context: ./back/
+      dockerfile: Dockerfile
     image: kdpsc/pd-app:v1.0
     container_name: backend
     restart: unless-stopped
   
   frontend:
+    build:
+      context: ./front/
+      dockerfile: Dockerfile
     image: kdpsc/pd-proxy:v1.0
     container_name: frontend
     restart: unless-stopped
