@@ -1,6 +1,11 @@
 version: '3'
+# Networks
+networks:
+  data:
+  webapp:
+# Services
 services:
-
+  # Service database
   database:
     build:
       context: ./data/
@@ -8,7 +13,9 @@ services:
     image: pd-data:v1.0
     container_name: database
     restart: unless-stopped
-  
+    networks:
+      - data
+  # Service backend
   backend:
     build:
       context: ./back/
@@ -16,7 +23,12 @@ services:
     image: kdpsc/pd-app:v1.0
     container_name: backend
     restart: unless-stopped
-  
+    networks:
+      - data
+      - webapp
+    depends_on:
+      - data
+  # Service Frontend
   frontend:
     build:
       context: ./front/
@@ -26,4 +38,7 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
-  
+    networks:
+      - webapp
+    depends_on:
+      - backend
