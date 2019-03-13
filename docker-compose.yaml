@@ -21,12 +21,13 @@ services:
     restart: unless-stopped
     networks:
       - data
+
   # Container backend
   backend:
     build:
       context: ./back/
       dockerfile: Dockerfile
-    image: kdpsc/pd-app:v1.0
+    image: pd-app:v1.0
     container_name: backend
     restart: unless-stopped
     networks:
@@ -34,12 +35,13 @@ services:
       - webapp
     depends_on:
       - database
+
   # Container frontend
   frontend:
     build:
       context: ./front/
       dockerfile: Dockerfile
-    image: kdpsc/pd-proxy:v1.0
+    image: pd-proxy:v1.0
     container_name: frontend
     restart: unless-stopped
     ports:
@@ -49,3 +51,4 @@ services:
       - proxy
     depends_on:
       - backend
+
