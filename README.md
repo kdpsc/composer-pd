@@ -23,6 +23,8 @@ Para buildar o projeto execute os passos a seguir:
 Branch develop
 --------------
 
+### Build
+
 Para buildar o projeto execute os passos a seguir:
 
 1. git clone https://github.com/kdpsc/composer-pd.git
