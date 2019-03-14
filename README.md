@@ -28,5 +28,6 @@ Branch develop
 Para buildar o projeto execute os passos a seguir:
 
 1. git clone https://github.com/kdpsc/composer-pd.git
-2. cd composer-pd && docker-compose up -d --build
-3. firefox http://localhost &
+2. cd composer-pd
+3. git-checkout develop && docker-compose up -d --build
+4. firefox http://localhost &
