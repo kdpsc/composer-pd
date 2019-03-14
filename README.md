@@ -31,3 +31,9 @@ Para buildar o projeto execute os passos a seguir:
 2. cd composer-pd
 3. git-checkout develop && docker-compose up -d --build
 4. firefox http://localhost &
+
+Desativar ambiente
+------------------
+
+Para desligar o ambiente, execute:
+* docker-compose down
